@@ -2,9 +2,14 @@
   "name": "pgats-2025-02-base",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha './test/**/*.test.js' --timeout 10000",
+    "start-rest": "node rest/server.js",
+    "start-graphql": "node graphql/server.js",
+    "test-rest-controller": "mocha './test/controller/**/*.test.js' --timeout 10000",
+    "test-rest-external": "mocha './test/external/**/*.test.js' --timeout 10000",
+    "test-graphql-external": "mocha './test/external/graphqlExternal.test.js' --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -23,6 +28,13 @@
     "express": "^4.21.2",
     "graphql": "^16.11.0",
     "jsonwebtoken": "^9.0.2",
+    "mocha": "^11.7.2",
+    "sinon": "^21.0.0",
+    "supertest": "^7.1.4",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "chai": "4.5.0",
+    "dotenv": "^17.2.2"
   }
 }

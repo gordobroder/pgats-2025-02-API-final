@@ -1,0 +1,111 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Transferências e Usuários",
+    "version": "1.0.0",
+    "description": "API para login, registro, consulta de usuários e transferências."
+  },
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "Registrar novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" },
+                  "favorecidos": { "type": "array", "items": { "type": "string" } }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Usuário criado" },
+          "400": { "description": "Erro de validação ou usuário já existe" }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Login de usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Login bem-sucedido" },
+          "400": { "description": "Usuário ou senha inválidos" }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Listar usuários",
+        "responses": {
+          "200": { "description": "Lista de usuários" }
+        }
+      }
+    },
+    "/transfers": {
+      "post": {
+        "summary": "Realizar transferência",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "from": { "type": "string" },
+                  "to": { "type": "string" },
+                  "value": { "type": "number" }
+                },
+                "required": ["from", "to", "value"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Transferência realizada" },
+          "400": { "description": "Erro de validação ou regra de negócio" },
+          "401": { "description": "Token não fornecido ou inválido" }
+        }
+      },
+      "get": {
+        "summary": "Listar transferências",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Lista de transferências" },
+          "401": { "description": "Token não fornecido ou inválido" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
