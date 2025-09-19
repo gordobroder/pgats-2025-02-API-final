@@ -130,6 +130,53 @@ describe('Checkout Controller', () => {
             expect(resposta.body).to.have.property('error', 'Produto não encontrado');
         });
 
+        it('Usando Mock: Checkout sem token de autorização retorna 401', async () => {
+            const resposta = await request(app)
+                .post('/api/checkout')
+                .send({
+                    "items": [
+                        {
+                            "productId": 1,
+                            "quantity": 5
+                        }
+                    ],
+                    "freight": 25,
+                    "paymentMethod": "boleto",
+                    "cardData": {
+                        "number": "12345678",
+                        "name": "Gustavo Schmidt",
+                        "expiry": "12/30",
+                        "cvv": "545"
+                    }
+                });
+
+            expect(resposta.status).to.equal(401);
+            expect(resposta.body).to.have.property('error', 'Token inválido');
+        });
+
+        it('Usando Mock: Checkout com cartão sem dados do cartão retorna 400', async () => {
+            const checkoutServiceStub = sinon.stub(checkoutService, 'checkout');
+            checkoutServiceStub.throws(new Error('Dados do cartão obrigatórios para pagamento com cartão'));
+
+            const resposta = await request(app)
+                .post('/api/checkout')
+                .set('Authorization', `Bearer ${token}`)
+                .send({
+                    "items": [
+                        {
+                            "productId": 2,
+                            "quantity": 3
+                        }
+                    ],
+                    "freight": 15,
+                    "paymentMethod": "credit_card"
+                    // cardData ausente propositalmente
+                });
+
+            expect(resposta.status).to.equal(400);
+            expect(resposta.body).to.have.property('error', 'Dados do cartão obrigatórios para pagamento com cartão');
+        });
+
         afterEach(() => {
             sinon.restore();
         })
