@@ -10,8 +10,8 @@ describe('Checkout External', () => {
             const respostaRegister = await request(process.env.BASE_URL_REST)
                 .post('/api/users/register')
                 .send({
-                    name: 'warlley',
-                    email: 'warlley.freitas@live.com',
+                    name: 'gustavo',
+                    email: 'gustavo.schmidt@live.com',
                     password: '123456'
                 });
         });
@@ -20,7 +20,7 @@ describe('Checkout External', () => {
             const respostaLogin = await request(process.env.BASE_URL_REST)
                 .post('/api/users/login')
                 .send({
-                    email: 'warlley.freitas@live.com',
+                    email: 'gustavo.schmidt@live.com',
                     password: '123456'
                 });
 
@@ -42,7 +42,7 @@ describe('Checkout External', () => {
                     "paymentMethod": "boleto",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }
@@ -66,7 +66,7 @@ describe('Checkout External', () => {
                     "paymentMethod": "boleto",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }
@@ -91,7 +91,7 @@ describe('Checkout External', () => {
                     "paymentMethod": "boleto",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }
@@ -116,7 +116,7 @@ describe('Checkout External', () => {
                     "paymentMethod": "credit_card",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }
@@ -142,7 +142,7 @@ describe('Checkout External', () => {
                     "paymentMethod": "boleto",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }

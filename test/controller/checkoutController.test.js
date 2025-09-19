@@ -17,8 +17,8 @@ describe('Checkout Controller', () => {
             const respostaRegister = await request(app)
                 .post('/api/users/register')
                 .send({
-                    name: 'warlley',
-                    email: 'warlley.freitas@live.com',
+                    name: 'gustavo',
+                    email: 'gustavo.schmidt@live.com',
                     password: '123456'
                 });
         });
@@ -27,7 +27,7 @@ describe('Checkout Controller', () => {
             const respostaLogin = await request(app)
                 .post('/api/users/login')
                 .send({
-                    email: 'warlley.freitas@live.com',
+                    email: 'gustavo.schmidt@live.com',
                     password: '123456'
                 });
 
@@ -64,7 +64,7 @@ describe('Checkout Controller', () => {
                     "paymentMethod": "boleto",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }
@@ -92,7 +92,7 @@ describe('Checkout Controller', () => {
                     "paymentMethod": "boleto",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }
@@ -120,7 +120,7 @@ describe('Checkout Controller', () => {
                     "paymentMethod": "boleto",
                     "cardData": {
                         "number": "12345678",
-                        "name": "Warlley Freitas",
+                        "name": "Gustavo Schmidt",
                         "expiry": "12/30",
                         "cvv": "545"
                     }

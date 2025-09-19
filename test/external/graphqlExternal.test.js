@@ -10,7 +10,7 @@ describe('GraphQL External', () => {
         // Register user via GraphQL
         const registerMutation = `
             mutation {
-                register(name: "warlley", email: "warlley.freitas@live.com", password: "123456") {
+                register(name: "gustavo", email: "gustavo.schmidt@live.com", password: "123456") {
                     name
                     email
                 }
@@ -28,7 +28,7 @@ describe('GraphQL External', () => {
         // Login user via GraphQL
         const loginMutation = `
             mutation {
-                login(email: "warlley.freitas@live.com", password: "123456") {
+                login(email: "gustavo.schmidt@live.com", password: "123456") {
                     user {
                         name
                         email
@@ -57,7 +57,7 @@ describe('GraphQL External', () => {
                         paymentMethod: "boleto",
                         cardData: {
                             number: "12345678",
-                            name: "Warlley Freitas",
+                            name: "Gustavo Schmidt",
                             expiry: "12/30",
                             cvv: "545"
                         }
@@ -97,7 +97,7 @@ describe('GraphQL External', () => {
                         paymentMethod: "boleto",
                         cardData: {
                             number: "12345678",
-                            name: "Warlley Freitas",
+                            name: "Gustavo Schmidt",
                             expiry: "12/30",
                             cvv: "545"
                         }
@@ -135,7 +135,7 @@ describe('GraphQL External', () => {
                         paymentMethod: "boleto",
                         cardData: {
                             number: "12345678",
-                            name: "Warlley Freitas",
+                            name: "Gustavo Schmidt",
                             expiry: "12/30",
                             cvv: "545"
                         }
@@ -173,7 +173,7 @@ describe('GraphQL External', () => {
                         paymentMethod: "credit_card",
                         cardData: {
                             number: "12345678",
-                            name: "Warlley Freitas",
+                            name: "Gustavo Schmidt",
                             expiry: "12/30",
                             cvv: "545"
                         }
